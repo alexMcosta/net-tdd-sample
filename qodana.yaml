@@ -11,6 +11,10 @@ ide: QDNET
 profile:
   name: qodana.starter
 
+bootstrap: dotnet build; cd tests && \\
+  dotnet add package coverlet.msbuild && dotnet add package coverlet.collector && \\
+  ((dotnet test /p:CollectCoverage=true /p:CoverletOutput=net-tdd-sample/.qodana/code-coverage /p:CoverletOutputFormat=lcov))
+
 #Enable inspections
 #include:
 #  - name: <SomeEnabledInspectionId>
